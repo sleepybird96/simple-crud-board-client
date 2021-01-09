@@ -1,0 +1,16 @@
+.commentListEntry {
+  margin: 1rem;
+  border: 1px solid gray;
+}
+
+.modify {
+  position: absolute;
+  right: 15%;
+  text-decoration: underline;
+}
+
+.delete {
+  position: absolute;
+  right: 20%;
+  text-decoration: underline;
+}

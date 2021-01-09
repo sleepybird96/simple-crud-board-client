@@ -1,0 +1,22 @@
+.inputComment {
+  border: 1px solid green;
+  padding: 2rem;
+  margin: 3rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.commentInput {
+  padding: 1rem;
+  width: 70%;
+  height: 30%;
+}
+
+.submitForm {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
