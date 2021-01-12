@@ -1,6 +1,7 @@
 .commentListEntry {
   margin: 1rem;
   border: 1px solid gray;
+  background-color: ghostwhite;
 }
 
 .modify {

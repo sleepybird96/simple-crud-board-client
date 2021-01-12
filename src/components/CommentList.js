@@ -1,14 +1,15 @@
-import './CommentList.css'
-import InputComment from './InputComment';
-import CommentListEntry from './CommentListEntry';
+import './CommentList.css';
 import InputYourPassword from './InputYourPassword';
+import CommentListEntry from './CommentListEntry';
+import ModifyComment from './ModifyComment'
+
 export default function CommentList (){
   return(
     <div className = 'CommentList'>
-      <CommentListEntry/>
-      <CommentListEntry/>
-      <InputComment/>
+      <ModifyComment/>
       <InputYourPassword/>
+      <CommentListEntry/>
+      <CommentListEntry/>
     </div>
   )
 }
