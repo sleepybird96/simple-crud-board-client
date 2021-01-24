@@ -1,15 +1,13 @@
 import './CommentList.css';
-import InputYourPassword from './InputYourPassword';
 import CommentListEntry from './CommentListEntry';
-import ModifyComment from './ModifyComment'
 
-export default function CommentList (){
+export default function CommentList (props){
+  console.log(props.posts)
   return(
     <div className = 'CommentList'>
-      <ModifyComment/>
-      <InputYourPassword/>
-      <CommentListEntry/>
-      <CommentListEntry/>
+      {props.posts.map((post, idx)=>{
+        return <CommentListEntry key={idx} name={post.name} comment={post.comment}/>
+      })}
     </div>
   )
 }
