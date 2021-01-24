@@ -8,10 +8,12 @@
   position: absolute;
   right: 15%;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .delete {
   position: absolute;
   right: 20%;
   text-decoration: underline;
+  cursor: pointer;
 }

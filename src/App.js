@@ -20,9 +20,10 @@ function App() {
 
   return (
     <div className="App">
-      <InputComment/>
+      <InputComment getPosts={getPosts}/>
       <CommentList
         posts={posts}
+        getPosts={getPosts}
       />
     </div>
   );
