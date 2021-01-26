@@ -20,17 +20,22 @@ export default function InputComment (props) {
   }
 
   const submit = () =>{
-    axios.post('https://127.0.0.1:4000/posts/write',{
-      name:nameInput,
-      password:passwordInput,
-      comment:commentInput
-    })
-    .then(()=>{
-      setNameInput('')
-      setPasswordInput('')
-      setCommentInput('')
-      props.getPosts();
-    })
+    if(nameInput&&passwordInput&&commentInput){
+      axios.post('https://127.0.0.1:4000/posts/write',{
+        name:nameInput,
+        password:passwordInput,
+        comment:commentInput
+      })
+      .then(()=>{
+        setNameInput('')
+        setPasswordInput('')
+        setCommentInput('')
+        props.getPosts();
+      })
+      .catch(err=>alert('잘못된요청입니다.'))
+    }else{
+      alert('뭐라도 입력하세요..제발..!')
+    }
   }
 
   return (

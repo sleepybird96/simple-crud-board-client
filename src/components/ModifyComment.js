@@ -21,17 +21,22 @@ export default function ModifyComment (props) {
   }
 
   const putModify = ()=>{
-    axios.put('https://127.0.0.1:4000/posts/modify',{
-      id,
-      name:nameInput,
-      password:passwordInput,
-      comment:commentInput
-    })
-    .then(()=>{
-      props.setModForm(null);
-      props.setCheckPw(false);
-      props.getPosts();
-    })
+    if(nameInput&&passwordInput&&commentInput){
+      axios.put('https://127.0.0.1:4000/posts/modify',{
+        id,
+        name:nameInput,
+        password:passwordInput,
+        comment:commentInput
+      })
+      .then(()=>{
+        props.setModForm(null);
+        props.setCheckPw(false);
+        props.getPosts();
+      })
+      .catch(()=>alert('뭐라도입력하세요 제발..'))
+    }else{
+      alert('뭐라도 입력하세요 제발..')
+    }
   }
 
   return (
