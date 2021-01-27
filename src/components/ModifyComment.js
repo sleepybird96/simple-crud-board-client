@@ -22,12 +22,12 @@ export default function ModifyComment (props) {
 
   const putModify = ()=>{
     if(nameInput&&passwordInput&&commentInput){
-      axios.put('https://127.0.0.1:4000/posts/modify',{
+      axios.put('https://server.gsang2board.click/posts/modify',{
         id,
         name:nameInput,
         password:passwordInput,
         comment:commentInput
-      })
+      },{withCredentials:true})
       .then(()=>{
         props.setModForm(null);
         props.setCheckPw(false);

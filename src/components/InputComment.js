@@ -21,18 +21,18 @@ export default function InputComment (props) {
 
   const submit = () =>{
     if(nameInput&&passwordInput&&commentInput){
-      axios.post('https://127.0.0.1:4000/posts/write',{
+      axios.post('https://server.gsang2board.click/posts/write',{
         name:nameInput,
         password:passwordInput,
         comment:commentInput
-      })
+      }, {withCredentials:true})
       .then(()=>{
         setNameInput('')
         setPasswordInput('')
         setCommentInput('')
         props.getPosts();
       })
-      .catch(err=>alert('잘못된요청입니다.'))
+      .catch(err=>{if(err)alert('잘못된요청입니다.')})
     }else{
       alert('뭐라도 입력하세요..제발..!')
     }

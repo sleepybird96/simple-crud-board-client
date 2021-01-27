@@ -11,10 +11,10 @@ export default function InputYourPassword (props){
   }
   const handleCommentForm = ()=>{
     if(props.isModify){
-      axios.post('https://127.0.0.1:4000/posts/modify',{
+      axios.post('https://server.gsang2board.click/posts/modify',{
         id:props.postId,
         password
-      })
+      },{withCredentials:true})
       .then(res=>{
         const {id, name, password, comment} =res.data;
         setModForm({
@@ -28,15 +28,16 @@ export default function InputYourPassword (props){
         if(err)alert("비밀번호를 확인해주세요")
       })
     }else{
-      axios.post('https://127.0.0.1:4000/posts/delete',{
+      axios.post('https://server.gsang2board.click/posts/delete',{
         id:props.postId,
         password
-      })
+      },{withCredentials:true})
       .then(res=>{
         setPw('');
-        return axios.delete('https://127.0.0.1:4000/posts/delete',{
-          data:{id:res.data.id}
-        })
+        return axios.delete('https://server.gsang2board.click/posts/delete',{
+          id:res.data.id,
+          password:res.data.password
+        },{withCredentials:true})
       })
       .then((res)=>{
         props.setCheckPw(false);

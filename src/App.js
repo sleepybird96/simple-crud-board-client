@@ -7,7 +7,7 @@ import axios from 'axios';
 function App() {
   const [posts, setPosts] = useState([]);
   const getPosts = ()=>{
-    axios("https://127.0.0.1:4000/posts")
+    axios("https://server.gsang2board.click/posts",{withCredentials:true})
     .then(res=>res.data)
     .then((posts)=>{
       setPosts(posts)
