@@ -16,7 +16,8 @@ export default function InputYourPassword (props){
         password
       },{withCredentials:true})
       .then(res=>{
-        const {id, name, password, comment} =res.data;
+        const {id, name, password, comment, token} =res.data;
+        props.handleToken(token);
         setModForm({
           id,
           name,
@@ -32,15 +33,12 @@ export default function InputYourPassword (props){
         id:props.postId,
         password
       },{withCredentials:true})
-      .then(res=>{
-        setPw('');
-        console.log(res)
-        return axios.delete('https://server.gsang2board.click/posts/delete',{
-          id:res.data.id,
-          password:res.data.password
-        },{withCredentials:true})
-      })
       .then((res)=>{
+        return axios.put('https://server.gsang2board.click/posts/delete','',{ 
+          headers:{'Authorization': `token ${res.data.token}`}
+        })
+      })
+      .then(()=>{
         props.setCheckPw(false);
         props.getPosts();
       })
@@ -51,7 +49,14 @@ export default function InputYourPassword (props){
   }
   return (
     modForm?
-    <ModifyComment modForm={modForm} setModForm={setModForm} getPosts={props.getPosts} setCheckPw={props.setCheckPw}/>
+    <ModifyComment 
+    modForm={modForm} 
+    setModForm={setModForm} 
+    getPosts={props.getPosts} 
+    setCheckPw={props.setCheckPw}
+    handleToken={props.handleToken}
+    accessToken={props.accessToken}
+    />
     :
     <div className ='inputYourPassword'>
       <label htmlFor='checkPassword'>비밀번호를 입력하세요:</label>

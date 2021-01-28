@@ -3,11 +3,10 @@ import { useState } from 'react'
 import axios from 'axios';
 
 export default function ModifyComment (props) {
-  const {id, name, password, comment} = props.modForm
+  const {name, password, comment} = props.modForm
   const [nameInput, setNameInput] = useState(name);
   const [passwordInput, setPasswordInput] = useState(password);
   const [commentInput, setCommentInput] = useState(comment);
-
   const handleNameInput = (e)=>{
     setNameInput(e.target.value);
   }
@@ -23,14 +22,16 @@ export default function ModifyComment (props) {
   const putModify = ()=>{
     if(nameInput&&passwordInput&&commentInput){
       axios.put('https://server.gsang2board.click/posts/modify',{
-        id,
         name:nameInput,
         password:passwordInput,
         comment:commentInput
-      },{withCredentials:true})
+      },{ 
+        headers:{'Authorization': `token ${props.accessToken}`}
+      })
       .then(()=>{
         props.setModForm(null);
         props.setCheckPw(false);
+        props.handleToken('');
         props.getPosts();
       })
       .catch(()=>alert('뭐라도입력하세요 제발..'))

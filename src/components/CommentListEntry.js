@@ -12,7 +12,14 @@ export default function CommentListEntry (props) {
 
   return(
     isCheckPw? 
-    <InputYourPassword postId={props.id} isModify={isModify} getPosts={props.getPosts} setCheckPw={setCheckPw}/>
+    <InputYourPassword 
+    postId={props.id} 
+    isModify={isModify} 
+    getPosts={props.getPosts} 
+    setCheckPw={setCheckPw}
+    handleToken={props.handleToken}
+    accessToken={props.accessToken}
+    />
     :
     <div className ='commentListEntry'>
       <section>
