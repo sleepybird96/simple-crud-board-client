@@ -21,7 +21,7 @@ export default function InputYourPassword (props){
           id,
           name,
           password,
-          comment
+          comment,
         });
       })
       .catch((err)=>{
@@ -34,6 +34,7 @@ export default function InputYourPassword (props){
       },{withCredentials:true})
       .then(res=>{
         setPw('');
+        console.log(res)
         return axios.delete('https://server.gsang2board.click/posts/delete',{
           id:res.data.id,
           password:res.data.password
